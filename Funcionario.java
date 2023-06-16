@@ -87,10 +87,19 @@ public class Funcionario extends Cliente {
         System.out.println("Digite o cargo do funcionário:");
         String cargo = input.nextLine();
 
-        System.out.println("Digite o salário do funcionário:");
-        double salario = input.nextDouble();
+        double salario = 0;
+        boolean salarioValido = false;
+        while (!salarioValido) {
+            try {
+                System.out.println("Digite o salário do funcionário:");
+                salario = input.nextDouble();
+                salarioValido = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Idade inválida. Digite um valor numérico.");
+                input.nextLine();
+            }
+        }
         input.nextLine();
-
         Funcionario novoFuncionario = new Funcionario(nome, cpf, endereco, idade, telefone, cargo, salario);
         cadastroFuncionario.add(novoFuncionario);
         }
@@ -181,12 +190,13 @@ public class Funcionario extends Cliente {
                     break;
                     
                 case "idade":
+                    int novaIdade = 0;
+
                     boolean idadeValida = false;
                     while (!idadeValida) {
                         try {
-                            input = new Scanner(System.in);
                             System.out.println("Digite a nova idade:");
-                            int novaIdade = input.nextInt();
+                            novaIdade = input.nextInt();
                             funcionario.setIdade(novaIdade);
                             System.out.println("Idade do funcionário alterada com sucesso.");
                             idadeValida = true;
@@ -194,8 +204,9 @@ public class Funcionario extends Cliente {
                             System.out.println("Idade inválida. Digite um valor numérico.");
                    
                         }
+                        break;
                     }
-                    break;
+                    
                     
                 case "telefone":
                     System.out.println("Digite o novo telefone:");
@@ -214,11 +225,20 @@ public class Funcionario extends Cliente {
                     System.out.println("Cargo alterado com sucesso.");
                     break;
                 case "salario":
-                    System.out.println("Digite o novo salário do funcionário:");
-                    double novoSalario = input.nextDouble();
-                    funcionario.setSalario(novoSalario);
-                    System.out.println("Salário atualizado com sucesso.");
-                    break;
+                    boolean salarioValido = false;
+                    while (!salarioValido) {
+                        try {
+                            System.out.println("Digite o novo salário:");
+                            int novoSalario = input.nextInt();
+                            funcionario.setSalario(novoSalario);
+                            System.out.println("Salário do funcionário alterado com sucesso.");
+                            salarioValido = true;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Salário inválido. Digite um valor numérico.");
+                   
+                        }
+                        break;
+                    }
             }
         } else {
             System.out.println("Número de funcionário inválido.");
