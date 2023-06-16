@@ -220,8 +220,9 @@ public class Cliente {
                             System.out.println("Idade inválida. Digite um valor numérico.");
                    
                         }
+                        break;
                     }
-                    break;
+                    
                     
                 case "telefone":
                     System.out.println("Digite o novo telefone:");
