@@ -115,6 +115,7 @@ public class Menu {
         System.out.println("=========== Menu de Listagem ===========");
         System.out.println("[1] Listar Funcionários");
         System.out.println("[2] Listar Clientes");
+        System.out.println("[3] Listar todos");
         System.out.println("[0] Voltar ao Menu");
         System.out.println("Selecione a opção que deseja executar: ");
         int escolhaListar = input.nextInt();
@@ -156,6 +157,11 @@ public class Menu {
                     clear.limparTerminal();
                 }
                 break;
+            case 3:
+            clear.limparTerminal();
+            cliente.imprimirClientes();
+            funcionario.imprimirFuncionarios();
+            break;
             case 0:
                 clear.limparTerminal();
                 break;
